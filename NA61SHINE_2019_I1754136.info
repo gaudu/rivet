@@ -1,0 +1,36 @@
+Name: NA61SHINE_2019_I1754136
+Year: 2019
+Summary: Measurements of hadron production in $\pi^{+}$+C and $\pi^{+}$+Be interactions at 60 GeV/c
+Experiment: NA61/SHINE
+Collider: CERN-SPS
+InspireID: 1754136
+Status: UNVALIDATED
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - DOI:10.1103/PhysRevD.100.112004
+ - arXiv:1909.06294 [hep-ex]
+RunInfo: pi+C to pi+X, pi-X, K+X, K-X, pX, K0sX, lambdaX, antilambdaX
+Beams: [pi+, C]
+Energies: [[60,0]]
+Description:
+  'Doubly differential multiplicity measurements of produced pi+, pi-, K+, K-, proton, lambda, anti-lambda from 60 GeV/c pi+C interactions.'
+Keywords: ['hadron production', 'fixed-target']
+BibKey: NA61SHINE:2019nzr
+BibTeX: '@article{NA61SHINE:2019nzr,
+    author = "Aduszkiewicz, A. and others",
+    collaboration = "NA61/SHINE",
+    title = "{Measurements of hadron production in $\pi^{+}$ + C and $\pi^{+}$ + Be interactions at 60 GeV/$c$}",
+    eprint = "1909.06294",
+    archivePrefix = "arXiv",
+    primaryClass = "hep-ex",
+    reportNumber = "CERN-EP-2019-198",
+    doi = "10.1103/PhysRevD.100.112004",
+    journal = "Phys. Rev. D",
+    volume = "100",
+    number = "11",
+    pages = "112004",
+    year = "2019"
+}'
+
