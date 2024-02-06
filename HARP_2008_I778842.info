@@ -1,0 +1,38 @@
+Name: HARP_2008_I778842
+Year: 2008
+Summary: Measurement of the production cross-sections of $\pi^{\pm}$ in p-C and $\pi^{\pm}$-C interactions at 12 GeV/c.
+Experiment: HARP
+Collider: CERN-PS
+InspireID: 778842
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - DOI:10.1016/j.astropartphys.2008.02.002
+ - arXiv:0802.0657 [astro-ph]
+RunInfo: pi+C, pi-C to pi+X, pi-X; 0.5 < $p_{\pi}$ < 8 GeV/c; 30 < $\theta$ < 210 mrad
+Beams: [[pi+, C], [pi-, C]]
+Energies: [[12, 0]]
+Description:
+  'Measurements of double-differential inclusive cross-sections of the production of secondary charged pions with momentum of $\pm$ 12 GeV/c in pion-nucleus fixed-target collision set-up. Collisions are made between charged pion projectiles and a thin carbon target. Results are given for secondary particles with polar angles between 30 and 210 mrad. The measured cross-sections have a direct impact on the precise calculation of atmospheric neutrino fluxes and on the improved reliability of extensive air shower simulations by reducing the uncertainties of hadronic interaction models in the low energy range.'
+#ValidationInfo:
+#  'A description of the process used to validate the Rivet code against the original experimental analysis. Cut-flow tables and similar information are welcome'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [cross-section, fixed-target]
+BibKey: Catanesi_2008
+BibTeX: '@article{Catanesi_2008,
+	doi = {10.1016/j.astropartphys.2008.02.002},
+	url = {https://doi.org/10.1016%2Fj.astropartphys.2008.02.002},
+	year = 2008,
+	month = {may},
+	publisher = {Elsevier {BV}},
+	volume = {29},
+	number = {4},
+	pages = {257--281},
+	author = {M.G. Catanesi and E. Radicioni and R. Edgecock and M. Ellis and S. Robbins and F.J.P. Soler and C. Gö{\ss}ling and S. Bunyatov and A. Krasnoperov and B. Popov and V. Tereshchenko and E. Di Capua and G. Vidal-Sitjes and A. Artamonov and S. Giani and S. Gilardoni and P. Gorbunov and A. Grant and A. Grossheim and P. Gruber and V. Ivanchenko and A. Kayis-Topaksu and J. Panman and I. Papadopoulos and E. Tcherniaev and I. Tsukerman and R. Veenhof and C. Wiebusch and P. Zucchelli and A. Blondel and S. Borghi and M. Campanelli and M.C. Morone and G. Prior and R. Schroeter and R. Engel and C. Meurer and I. Kato and U. Gastaldi and G.B. Mills and J.S. Graulich and G. Grégoire and M. Bonesini and F. Ferri and M. Kirsanov and A. Bagulya and V. Grichine and N. Polukhina and V. Palladino and L. Coney and D. Schmitz and G. Barr and A. De Santo and C. Pattison and K. Zuber and F. Bobisut and D. Gibin and A. Guglielmi and M. Mezzetto and J. Dumarchez and F. Vannucci and U. Dore and D. Orestano and F. Pastore and A. Tonazzo and L. Tortora and C. Booth and L. Howlett and M. Bogomilov and M. Chizhov and D. Kolev and R. Tsenov and S. Piperov and P. Temnikov and M. Apollonio and P. Chimenti and G. Giannini and G. Santin and J. Burguet-Castell and A. Cervera-Villanueva and J.J. Gómez-Cadenas and J. Martín-Albo and P. Novella and M. Sorel},
+	title = {Measurement of the production cross-sections of $\pi^{\pm}$ in p-C and $\pi^{\pm}$-C interactions at 12 GeV/c},
+	journal = {Astroparticle Physics}
+}'
+
