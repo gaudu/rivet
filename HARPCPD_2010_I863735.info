@@ -1,0 +1,39 @@
+Name: HARPCPD_2010_I863735
+Year: 2010
+Summary: Cross-sections of large-angle hadron production in proton- and pion-nucleus interactions VI$\mathpunct$ carbon nuclei and beam momenta from $\pm3$ GeV/c to $\pm 15$ GeV/c.
+Experiment: HARP-CPD
+Collider: CERN-PS
+InspireID: 863735
+Status: UNVALIDATED NOHEPDATA SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - DOI:10.1140/epjc/s10052-010-1479-z
+ - arXiv:1007.5482 [hep-ex]
+RunInfo: pi+C, pi-C to pX, pi+X, pi-X; 0 < $p_T$ < 1.25 GeV/c; 20 < theta < 125 degrees
+Beams: [[pi+, C], [pi-, C]]
+Energies: [[3,0], [5,0], [8,0], [12,0], [15,0]]
+Description:
+  'Measurements of double-differential inclusive cross-sections of the production of secondary protons and charged pions with momentum from $\pm$ 3 GeV/c to $\pm$ 15 GeV/c in pion-nucleus fixed-target collision set-up. Collisions are made between charged pion projectiles and a thin carbon target. Results are given for secondary particles with production angles between 20 and 125 degrees.'
+#ValidationInfo:
+#  'A description of the process used to validate the Rivet code against the original experimental analysis. Cut-flow tables and similar information are welcome'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [cross-section, fixed-target, charged pions, carbon target]
+BibKey: HARP-CDP:2010izr
+BibTeX: '@article{HARP-CDP:2010izr,
+	author = "Bolshakova, A. and et al.",
+	collaboration = "HARP-CDP",
+	title = "{Cross-sections of large-angle hadron production in proton- and pion-nucleus interactions VI: carbon nuclei and beam momenta from \textbackslash{}pm 3 GeV/c to \textbackslash{}pm 15 GeV/c}",
+	eprint = "1007.5482",
+	archivePrefix = "arXiv",
+	primaryClass = "hep-ex",
+	reportNumber = "CERN-PH-EP-2010-026",
+	doi = "10.1140/epjc/s10052-010-1479-z",
+	journal = "Eur. Phys. J. C",
+	volume = "70",
+	pages = "573--633",
+	year = "2010"
+}'
+
