@@ -1,7 +1,7 @@
-Rivet plug-in written during my Master thesis:
+Rivet-3.1.7 plug-in written during my Master thesis:
 * LHCB_2011_I891233 (https://inspirehep.net/literature/891233)
 
-Rivet plug-in written during my PhD thesis:
+Rivet-3.1.7 plug-ins written during my PhD thesis:
 * HARP_2008_I778842 (https://inspirehep.net/literature/778842)
 * HARPCDP_2010_I863735 (https://inspirehep.net/literature/863735)
 * NA61SHINE_2019_I1754136 (https://inspirehep.net/literature/1754136)
