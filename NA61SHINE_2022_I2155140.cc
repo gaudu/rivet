@@ -9,7 +9,10 @@ namespace Rivet {
   class NA61SHINE_2022_I2155140 : public Analysis {
   public:
 
-    RIVET_DEFAULT_ANALYSIS_CTOR(NA61SHINE_2022_I2155140);
+    //RIVET_DEFAULT_ANALYSIS_CTOR(NA61SHINE_2022_I2155140);
+	NA61SHINE_2022_I2155140()
+      : Analysis("NA61SHINE_2022_I2155140")
+    {    }
 
     void init() {
     
