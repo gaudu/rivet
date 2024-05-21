@@ -20,6 +20,7 @@ namespace Rivet {
     /// Book histograms and initialise projections before the run
     void init() {
 
+      const ChargedFinalState& cfs = ChargedFinalState(Cuts::abseta < 0.8 && Cuts::pT > 0.2*GeV && Cuts::pT < 5.0*GeV);
       declare(ChargedFinalState(), "CFS");
 
       // beam.first.pid() can be a proton, antiproton, K+, K-, pi+ or pi- for d01-x01-y01 to d16-x01-y01
@@ -60,6 +61,48 @@ namespace Rivet {
 
       const ParticlePair& beam = beams();
 
+      // beam.first.pid(): PID::PROTON, PID::ANTIPROTON, PID::KPLUS, PID::KMINUS, PID::PIPLUS or PID::PIMINUS
+      // beam.second.pid(): PID::PROTON, PID::DEUTERON or PID::NEUTRON
+      
+      //switch/case structure
+      switch ( beam.second.pid() ) {
+
+      case PID::PROTON:
+        switch ( beam.first.pid() ) {
+        case PID::PROTON:
+          _h["p_p"]->fill();
+          break;
+        case PID::ANTIPROTON:
+          _h["ap_p"]->fill();
+          break;
+        }
+      break;
+    
+      case PID::DEUTERON:
+      switch ( beam.first.pid() ) {
+        case PID::PROTON:
+          _h["p_d"]->fill();
+          break;
+        case PID::ANTIPROTON:
+          _h["ap_d"]->fill();
+          break;
+        }
+      break;
+
+      case PID::NEUTRON:
+      switch ( beam.first.pid() ) {
+        case PID::PROTON:
+          _h["p_n"]->fill();
+          break;
+        case PID::ANTIPROTON:
+          _h["ap_n"]->fill();
+          break;
+        }
+      break;
+
+      }
+
+      // if/else structure
       if (beam.first.pid() == PID::PROTON && beam.second.pid() == PID::PROTON) {
         _h["p_p"]->fill();
       }
@@ -67,8 +110,7 @@ namespace Rivet {
         _h["pim_p"]->fill();
       }
 
-      // Fill histogram 
-      _h["XXXX"]->fill();
+      // unordered_map structure?
 
     }
 
