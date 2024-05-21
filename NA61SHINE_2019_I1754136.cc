@@ -3,7 +3,6 @@
 #include "Rivet/Projections/UnstableParticles.hh"
 #include "Rivet/Tools/BinnedHistogram.hh"
 
-
 namespace Rivet {
 
   class NA61SHINE_2019_I1754136 : public Analysis {
@@ -25,7 +24,7 @@ namespace Rivet {
       {Histo1DPtr tmp; _h_pip.add( .1 , .14, 	book(tmp, 1, 1, 7));}
       {Histo1DPtr tmp; _h_pip.add( .14, .18, 	book(tmp, 1, 1, 8));}
       {Histo1DPtr tmp; _h_pip.add( .18, .24, 	book(tmp, 1, 1, 9));}
-      {Histo1DPtr tmp; _h_pip.add( .24, .3 ,  	book(tmp, 1, 1, 10));}
+      {Histo1DPtr tmp; _h_pip.add( .24, .3 ,  book(tmp, 1, 1, 10));}
       {Histo1DPtr tmp; _h_pip.add( .3 , .36, 	book(tmp, 1, 1, 11));}
       {Histo1DPtr tmp; _h_pip.add( .36, .42, 	book(tmp, 1, 1, 12));}
       
@@ -39,7 +38,7 @@ namespace Rivet {
       {Histo1DPtr tmp; _h_pim.add( .1 , .14, 	book(tmp, 2, 1, 7));}
       {Histo1DPtr tmp; _h_pim.add( .14, .18, 	book(tmp, 2, 1, 8));}
       {Histo1DPtr tmp; _h_pim.add( .18, .24, 	book(tmp, 2, 1, 9));}
-      {Histo1DPtr tmp; _h_pim.add( .24, .3 ,  	book(tmp, 2, 1, 10));}
+      {Histo1DPtr tmp; _h_pim.add( .24, .3 ,  book(tmp, 2, 1, 10));}
       {Histo1DPtr tmp; _h_pim.add( .3 , .36, 	book(tmp, 2, 1, 11));}
       {Histo1DPtr tmp; _h_pim.add( .36, .42, 	book(tmp, 2, 1, 12));}
       
@@ -72,7 +71,7 @@ namespace Rivet {
       {Histo1DPtr tmp; _h_p.add( .1 , .14, 	book(tmp, 5, 1, 5));}
       {Histo1DPtr tmp; _h_p.add( .14, .18, 	book(tmp, 5, 1, 6));}
       {Histo1DPtr tmp; _h_p.add( .18, .24, 	book(tmp, 5, 1, 7));}
-      {Histo1DPtr tmp; _h_p.add( .24, .3 ,  	book(tmp, 5, 1, 8));}
+      {Histo1DPtr tmp; _h_p.add( .24, .3 ,  book(tmp, 5, 1, 8));}
       {Histo1DPtr tmp; _h_p.add( .3 , .36, 	book(tmp, 5, 1, 9));}
       {Histo1DPtr tmp; _h_p.add( .36, .42, 	book(tmp, 5, 1, 10));}
       
@@ -84,7 +83,7 @@ namespace Rivet {
       {Histo1DPtr tmp; _h_k0s.add( .1 , .14, 	book(tmp, 6, 1, 5));}
       {Histo1DPtr tmp; _h_k0s.add( .14, .18, 	book(tmp, 6, 1, 6));}
       {Histo1DPtr tmp; _h_k0s.add( .18, .24, 	book(tmp, 6, 1, 7));}
-      {Histo1DPtr tmp; _h_k0s.add( .24, .3 ,  	book(tmp, 6, 1, 8));}
+      {Histo1DPtr tmp; _h_k0s.add( .24, .3 ,  book(tmp, 6, 1, 8));}
       {Histo1DPtr tmp; _h_k0s.add( .3 , .36, 	book(tmp, 6, 1, 9));}
       
       // -> lambdaX  		    theta ranges	       d07-x01-y0a
@@ -111,74 +110,73 @@ namespace Rivet {
 
     void analyze(const Event& event) {
 	
-        const UnstableParticles& ufs = apply<UnstableParticles> (event, "UFS");
-	for (const Particle& p : ufs.particles()) {
+      const UnstableParticles& ufs = apply<UnstableParticles> (event, "UFS");
+	    for (const Particle& p : ufs.particles()) {
 	
-		const Vector3& v = p.momentum().p3();	
-		double weight = 1.0;
-		
-		//cout << "p.pid(): " << p.pid() << " v.theta(): " << v.theta() << " v.mod()/GeV: " << v.mod()/GeV << endl;
-	
-        	switch (p.pid()) {	
-			case 211: {
-				/*if (v.theta()<0.01):
-					if (v.theta()>0.003 && v.mod()/GeV>33):
-						_h_pip.fill(	*/			
-               			_h_pip.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		
-	    		case -211: {
-				_h_pim.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		case 321: {
-               			_h_kp.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		
-	    		case -321: {
-				_h_km.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		
-	    		case 2212: {
-               			_h_p.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		
-	    		case 310: {
-				_h_k0s.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		
-	    		case 3122: {
-				_h_lambda.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	    		
-	    		case -3122: {
-				_h_antilambda.fill(v.theta(), v.mod()/GeV, weight);
-               			break;
-	    		}
-	  	}
- 	}
-     
+        const Vector3& v = p.momentum().p3();	
+        double weight = 1.0;
+      
+        //cout << "p.pid(): " << p.pid() << " v.theta(): " << v.theta() << " v.mod()/GeV: " << v.mod()/GeV << endl;
+    
+        switch (p.pid()) {	
+        case 211: {
+          /*if (v.theta()<0.01):
+            if (v.theta()>0.003 && v.mod()/GeV>33):
+              _h_pip.fill(	*/			
+          _h_pip.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+            
+        case -211: {
+          _h_pim.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
 
+        case 321: {
+          _h_kp.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+            
+        case -321: {
+          _h_km.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+            
+        case 2212: {
+          _h_p.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+            
+        case 310: {
+          _h_k0s.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+            
+        case 3122: {
+          _h_lambda.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+            
+        case -3122: {
+          _h_antilambda.fill(v.theta(), v.mod()/GeV, weight);
+          break;
+        }
+        }
+ 	    }
     }
 
     void finalize() {
 
-	//double scale_factor = 1./sumOfWeights(); 
-	
-	for (Histo1DPtr h :        _h_pip.histos()) 	normalize(h);
-	for (Histo1DPtr h :        _h_pim.histos()) 	normalize(h);
-	for (Histo1DPtr h :         _h_kp.histos()) 	normalize(h);
-	for (Histo1DPtr h :         _h_km.histos())	normalize(h);
-	for (Histo1DPtr h :          _h_p.histos()) 	normalize(h);
-	for (Histo1DPtr h :        _h_k0s.histos()) 	normalize(h);
-	for (Histo1DPtr h :     _h_lambda.histos()) 	normalize(h);
-	for (Histo1DPtr h : _h_antilambda.histos()) 	normalize(h);
+      //double scale_factor = 1./sumOfWeights(); 
+    
+      for (Histo1DPtr h :        _h_pip.histos()) 	normalize(h);
+      for (Histo1DPtr h :        _h_pim.histos()) 	normalize(h);
+      for (Histo1DPtr h :         _h_kp.histos()) 	normalize(h);
+      for (Histo1DPtr h :         _h_km.histos())	  normalize(h);
+      for (Histo1DPtr h :          _h_p.histos()) 	normalize(h);
+      for (Histo1DPtr h :        _h_k0s.histos()) 	normalize(h);
+      for (Histo1DPtr h :     _h_lambda.histos()) 	normalize(h);
+      for (Histo1DPtr h : _h_antilambda.histos()) 	normalize(h);
 
     }
 
@@ -186,9 +184,7 @@ namespace Rivet {
     
      BinnedHistogram _h_pip, _h_pim, _h_kp, _h_km, _h_p, _h_k0s, _h_lambda, _h_antilambda;
 
-
   };
-
 
   RIVET_DECLARE_PLUGIN(NA61SHINE_2019_I1754136);
 
