@@ -1,0 +1,39 @@
+Name: E104_1976_I98502
+Year: 1976
+Summary: Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ on protons and deuterons between 23 GeV/c and 280 GeV/c
+Experiment: FNAL-E-0104
+Collider: Fermilab
+InspireID: 98502
+Status: UNVALIDATED NOHEPDATA SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Phys.Lett.B 61 (1976) 303-308
+ - DOI:10.1016/0370-2693(76)90155-6
+#RunInfo: Fixed-target events with $p$, $\overline{p}$, $K^{+}$, $K^{-}$, $\pi^{+}$ and $\pi^{-}$
+#Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [K+, p+], [K+, d+], [K+, n+], [K-, p+], [K-, d+], [K-, n+], [pi+, p+], [pi+, d+], [pi+, n+], [pi-, p+], [pi-, d+], [pi-, n+]
+#Energies: [[23.0,0.0], [35.0,0.0], [50.0,0.0], [70.0,0.0], [100.0,0.0], [120.0,0.0], [150.0,0.0], [170.0,0.0], [200.0,0.0], [240.0,0.0], [280.0,0.0]]
+Description:
+  'Total cross-sections of projectiles $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$, with momenta between 23 GeV/c and 280 GeV/c, on fixed-targets protons and deuterons'
+ValidationInfo:
+  'Projectile lab energy: [23:280] GeV/c'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [cross-section, proton, deuteron, fixed-target]
+BibKey: Carroll:1975xf
+BibTeX: '@article{Carroll:1975xf,
+    author = "Carroll, A. S. and others",
+    title = "{Total Cross-Sections of $\pi^\pm$, $K^\pm$, $p$, and $\bar{p}$ on Protons and Deuterons Between 23-GeV/c and 280-GeV/c}",
+    reportNumber = "FERMILAB-PUB-75-051-EXP, FERMILAB-PUB-75-051-E",
+    doi = "10.1016/0370-2693(76)90155-6",
+    journal = "Phys. Lett. B",
+    volume = "61",
+    pages = "303--308",
+    year = "1976"
+}'
+ToDo:
+ - Find E-0104 cuts (energy, 
+ - Set-up the histogram booking separating total cross-sections and ratios
+ - 
+
