@@ -20,13 +20,42 @@ namespace Rivet {
     /// Book histograms and initialise projections before the run
     void init() {
 
-      const ChargedFinalState& cfs = ChargedFinalState(Cuts::abseta < 0.8 && Cuts::pT > 0.2*GeV && Cuts::pT < 5.0*GeV);
+      const ChargedFinalState& cfs = ChargedFinalState();
       declare(ChargedFinalState(), "CFS");
 
       // beam.first.pid() can be a proton, antiproton, K+, K-, pi+ or pi- for d01-x01-y01 to d16-x01-y01
       // beam.second.pid() can be a proton, deuteron or neutron for d01-x01-y01 to d16-x01-y01
       // d17-x01-y01 to d24-x01-y01 are ratios
+
+      const ParticlePair& beam = beams();
       
+      std::unordered_map<std::pair<PID, PID>, std::function<void()>> booking_beam_pid_map = {
+        {{PID::PROTON,      PID::PROTON},   []() {book(_h["p_p"],    1,  1, 1);}},
+        {{PID::PROTON,      PID::DEUTERON}, []() {book(_h["p_d"],    2,  1, 1);}},
+        {{PID::PROTON,      PID::NEUTRON},  []() {book(_h["p_n"],    3,  1, 1);}},
+        {{PID::ANTIPROTON,  PID::PROTON},   []() {book(_h["ap_p"],   4,  1, 1);}},
+        {{PID::ANTIPROTON,  PID::DEUTERON}, []() {book(_h["ap_d"],   5,  1, 1);}},
+        {{PID::ANTIPROTON,  PID::NEUTRON},  []() {book(_h["ap_n"],   6,  1, 1);}},
+        {{PID::KPLUS,       PID::PROTON},   []() {book(_h["kp_p"],   7,  1, 1);}},
+        {{PID::KPLUS,       PID::DEUTERON}, []() {book(_h["kp_d"],   8,  1, 1);}},
+        {{PID::KPLUS,       PID::NEUTRON},  []() {book(_h["kp_n"],   9,  1, 1);}},
+        {{PID::KMINUS,      PID::PROTON},   []() {book(_h["km_p"],  10,  1, 1);}},
+        {{PID::KMINUS,      PID::DEUTERON}, []() {book(_h["km_d"],  11,  1, 1);}},
+        {{PID::KMINUS,      PID::NEUTRON},  []() {book(_h["km_n"],  12,  1, 1);}},
+        {{PID::PIPLUS,      PID::PROTON},   []() {book(_h["pip_p"], 13,  1, 1);}},
+        {{PID::PIPLUS,      PID::DEUTERON}, []() {book(_h["pip_d"], 14,  1, 1);}},
+        {{PID::PIMINUS,     PID::PROTON},   []() {book(_h["pim_p"], 15,  1, 1);}},
+        {{PID::PIMINUS,     PID::DEUTERON}, []() {book(_h["pim_d"], 16,  1, 1);}},
+      };
+
+      std::pair<PID, PID> key = {beam.first.pid(), beam.second.pid()};
+      if (booking_beam_pid_map.find(key) != booking_beam_pid_map.end()) {
+        booking_beam_pid_map[key]();
+      } else {
+        MSG_WARNING("Beam type not compatible with this analysis.");
+      }
+      
+      /*
       book(_h["p_p"],   1,  1, 1);
       book(_h["p_d"],   2,  1, 1);
       book(_h["p_n"],   3,  1, 1);
@@ -43,6 +72,7 @@ namespace Rivet {
       book(_h["pip_d"], 14, 1, 1);
       book(_h["pim_p"], 15, 1, 1);
       book(_h["pim_d"], 16, 1, 1);
+      */
 
       book(_h["ap_p-p_p"],    17, 1, 1);
       book(_h["ap_d-p_d"],    18, 1, 1);
@@ -55,8 +85,6 @@ namespace Rivet {
 
     }
 
-
-    /// Perform the per-event analysis
     void analyze(const Event& event) {
 
       const ParticlePair& beam = beams();
@@ -115,7 +143,6 @@ namespace Rivet {
     }
 
 
-    /// Normalise histograms etc., after the run
     void finalize() {
 
       normalize(_h["YYYY"], crossSection()/millibarn); // normalize to generated cross-section in mb (no cuts)
