@@ -20,7 +20,6 @@ namespace Rivet {
     /// Book histograms and initialise projections before the run
     void init() {
 
-      const ChargedFinalState& cfs = ChargedFinalState();
       declare(ChargedFinalState(), "CFS");
 
       // beam.first.pid() can be a proton, antiproton, K+, K-, pi+ or pi- for d01-x01-y01 to d16-x01-y01
@@ -29,7 +28,7 @@ namespace Rivet {
 
       const ParticlePair& beam = beams();
       
-      std::unordered_map<std::pair<PID, PID>, std::function<void()>> booking_beam_pid_map = {
+      std::unordered_map<std::pair<PID, PID>, std::function<void()>> book_histo_map = {
         {{PID::PROTON,      PID::PROTON},   []() {book(_h["p_p"],    1,  1, 1);}},
         {{PID::PROTON,      PID::DEUTERON}, []() {book(_h["p_d"],    2,  1, 1);}},
         {{PID::PROTON,      PID::NEUTRON},  []() {book(_h["p_n"],    3,  1, 1);}},
@@ -49,13 +48,13 @@ namespace Rivet {
       };
 
       std::pair<PID, PID> key = {beam.first.pid(), beam.second.pid()};
-      if (booking_beam_pid_map.find(key) != booking_beam_pid_map.end()) {
-        booking_beam_pid_map[key]();
+      if (book_histo_map.find(key) != book_histo_map.end()) {
+        book_histo_map[key]();
       } else {
         MSG_WARNING("Beam type not compatible with this analysis.");
       }
       
-      /*
+      /* total cross-section
       book(_h["p_p"],   1,  1, 1);
       book(_h["p_d"],   2,  1, 1);
       book(_h["p_n"],   3,  1, 1);
@@ -74,6 +73,7 @@ namespace Rivet {
       book(_h["pim_d"], 16, 1, 1);
       */
 
+      /* total cross-section ratios
       book(_h["ap_p-p_p"],    17, 1, 1);
       book(_h["ap_d-p_d"],    18, 1, 1);
       book(_h["ap_n-p_n"],    19, 1, 1);
@@ -82,66 +82,42 @@ namespace Rivet {
       book(_h["km_n-kp_n"],   22, 1, 1);
       book(_h["pim_p-pip_p"], 23, 1, 1);
       book(_h["pim_d-pip_d"], 24, 1, 1);
-
+      */
     }
 
     void analyze(const Event& event) {
 
+      const ChargedFinalState& cfs = ChargedFinalState();
       const ParticlePair& beam = beams();
 
-      // beam.first.pid(): PID::PROTON, PID::ANTIPROTON, PID::KPLUS, PID::KMINUS, PID::PIPLUS or PID::PIMINUS
-      // beam.second.pid(): PID::PROTON, PID::DEUTERON or PID::NEUTRON
+      for (const Particle& p : cfs.particles(Cuts::eta > 0)) {
       
-      //switch/case structure
-      switch ( beam.second.pid() ) {
+        std::unordered_map<std::pair<PID, PID>, std::function<void()>> fill_histo_map = {
+          {{PID::PROTON,      PID::PROTON},   []() {_h["p_p"]->fill();}},
+          {{PID::PROTON,      PID::DEUTERON}, []() {_h["p_d"]->fill();}},
+          {{PID::PROTON,      PID::NEUTRON},  []() {_h["p_n"]->fill();}},
+          {{PID::ANTIPROTON,  PID::PROTON},   []() {_h["ap_p"]->fill();}},
+          {{PID::ANTIPROTON,  PID::DEUTERON}, []() {_h["ap_d"]->fill();}},
+          {{PID::ANTIPROTON,  PID::NEUTRON},  []() {_h["ap_n"]->fill();}},
+          {{PID::KPLUS,       PID::PROTON},   []() {_h["kp_p"]->fill();}},
+          {{PID::KPLUS,       PID::DEUTERON}, []() {_h["kp_d"]->fill();}},
+          {{PID::KPLUS,       PID::NEUTRON},  []() {_h["kp_n"]->fill();}},
+          {{PID::KMINUS,      PID::PROTON},   []() {_h["km_p"]->fill();}},
+          {{PID::KMINUS,      PID::DEUTERON}, []() {_h["km_d"]->fill();}},
+          {{PID::KMINUS,      PID::NEUTRON},  []() {_h["km_n"]->fill();}},
+          {{PID::PIPLUS,      PID::PROTON},   []() {_h["pip_p"]->fill();}},
+          {{PID::PIPLUS,      PID::DEUTERON}, []() {_h["pip_d"]->fill();}},
+          {{PID::PIMINUS,     PID::PROTON},   []() {_h["pim_p"]->fill();}},
+          {{PID::PIMINUS,     PID::DEUTERON}, []() {_h["pim_d"]->fill();}},
+        };
 
-      case PID::PROTON:
-        switch ( beam.first.pid() ) {
-        case PID::PROTON:
-          _h["p_p"]->fill();
-          break;
-        case PID::ANTIPROTON:
-          _h["ap_p"]->fill();
-          break;
+        std::pair<PID, PID> key = {beam.first.pid(), beam.second.pid()};
+        if (fill_histo_map.find(key) != fill_histo_map.end()) {
+          fill_histo_map[key]();
         }
-      break;
-    
-      case PID::DEUTERON:
-      switch ( beam.first.pid() ) {
-        case PID::PROTON:
-          _h["p_d"]->fill();
-          break;
-        case PID::ANTIPROTON:
-          _h["ap_d"]->fill();
-          break;
-        }
-      break;
-
-      case PID::NEUTRON:
-      switch ( beam.first.pid() ) {
-        case PID::PROTON:
-          _h["p_n"]->fill();
-          break;
-        case PID::ANTIPROTON:
-          _h["ap_n"]->fill();
-          break;
-        }
-      break;
 
       }
-
-      // if/else structure
-      if (beam.first.pid() == PID::PROTON && beam.second.pid() == PID::PROTON) {
-        _h["p_p"]->fill();
-      }
-      else if (beam.first.pid() == PID::PIMINUS && beam.second.pid() == PID::PROTON) {
-        _h["pim_p"]->fill();
-      }
-
-      // unordered_map structure?
-
     }
-
 
     void finalize() {
 
