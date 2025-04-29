@@ -1,6 +1,10 @@
 Name: E104_1976_I98502
 Year: 1976
+<<<<<<< HEAD
 Summary: Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ on protons and deuterons between 23 GeV/c and 280 GeV/c
+=======
+Summary: Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$​ on protons and deuterons between 23 GeV/c and 280 GeV/c
+>>>>>>> 673eabb (restart plugin for E104_1976_I98502 on 4.1.0 with insights from Lund)
 Experiment: FNAL-E-0104
 Collider: Fermilab
 InspireID: 98502
@@ -11,11 +15,19 @@ Authors:
 References:
  - Phys.Lett.B 61 (1976) 303-308
  - DOI:10.1016/0370-2693(76)90155-6
+<<<<<<< HEAD
 #RunInfo: Fixed-target events with $p$, $\overline{p}$, $K^{+}$, $K^{-}$, $\pi^{+}$ and $\pi^{-}$
 #Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [K+, p+], [K+, d+], [K+, n+], [K-, p+], [K-, d+], [K-, n+], [pi+, p+], [pi+, d+], [pi+, n+], [pi-, p+], [pi-, d+], [pi-, n+]
 #Energies: [[23.0,0.0], [35.0,0.0], [50.0,0.0], [70.0,0.0], [100.0,0.0], [120.0,0.0], [150.0,0.0], [170.0,0.0], [200.0,0.0], [240.0,0.0], [280.0,0.0]]
 Description:
   'Total cross-sections of projectiles $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$, with momenta between 23 GeV/c and 280 GeV/c, on fixed-targets protons and deuterons'
+=======
+#RunInfo: Fixed-target events with $p$, $\overline{p}$​, $K^{+}$, $K^{-}$, $\pi^{+}$ and $\pi^{-}$
+#Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [K+, p+], [K+, d+], [K+, n+], [K-, p+], [K-, d+], [K-, n+], [pi+, p+], [pi+, d+], [pi+, n+], [pi-, p+], [pi-, d+], [pi-, n+]
+#Energies: [[23.0,0.0], [35.0,0.0], [50.0,0.0], [70.0,0.0], [100.0,0.0], [120.0,0.0], [150.0,0.0], [170.0,0.0], [200.0,0.0], [240.0,0.0], [280.0,0.0]]
+Description:
+  'Total cross-sections of projectiles $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$​, with momenta between 23 GeV/c and 280 GeV/c, on fixed-targets protons and deuterons'
+>>>>>>> 673eabb (restart plugin for E104_1976_I98502 on 4.1.0 with insights from Lund)
 ValidationInfo:
   'Projectile lab energy: [23:280] GeV/c'
 #ReleaseTests:

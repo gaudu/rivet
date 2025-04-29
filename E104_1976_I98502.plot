@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 # BEGIN PLOT /LHCB_2011_I891233/.*
+=======
+# BEGIN PLOT /E104_1976_I98502/.*
+>>>>>>> 673eabb (restart plugin for E104_1976_I98502 on 4.1.0 with insights from Lund)
 XLabel=$P_{lab}$ [GeV/c]
 RatioPlot=1
 # END PLOT
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 673eabb (restart plugin for E104_1976_I98502 on 4.1.0 with insights from Lund)
 BEGIN PLOT /E104_1976_I98502/d01-x01-y01
 Title=$pp \rightarrow X$
 YLabel=$\sigma_{pp}$ [mb]
