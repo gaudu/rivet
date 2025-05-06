@@ -1,11 +1,14 @@
 # BEGIN PLOT /E104_1976_I98502/.*
 XLabel=$P_{lab}$ [GeV/c]
 RatioPlot=1
+LogY=0
 # END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d01-x01-y01
 Title=$pp \rightarrow X$
 YLabel=$\sigma_{pp}$ [mb]
+LegendXPos=0.1
+LegendYPos=0.3
 END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d02-x01-y01

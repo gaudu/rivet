@@ -33,5 +33,7 @@ BibTeX: '@article{Carroll:1975xf,
     year = "1976"
 }'
 ToDo:
- - Set-up the histogram booking separating total cross-sections and ratios
+ - Handle ratios: reentrant plugin?
+ - Handle several projectile momentum input
+ - Merge into a single d0i-x01-y01 the several rows (one per projectile plab)
 

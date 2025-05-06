@@ -1,7 +1,6 @@
 // -*- C++ -*-
 #include "Rivet/Analysis.hh"
 #include "Rivet/Projections/Beam.hh"
-#include "Rivet/Tools/BinnedHistogram.hh"
 
 namespace Rivet {
 
@@ -19,45 +18,36 @@ namespace Rivet {
 
     void init() {
       
-      declare(Beam(), "Beam");
-      const std::map<int, int> proj = {
-        {2212, 0},
-        {-2212, 3},
-        {321, 6},
-        {-321, 9},
-        {211, 12},
-        {-211, 14}
-      };
-      const std::map<int, int> targ = {
-        {2212, 1},
-        {1000010020, 2},
-        {2112, 3}
-      }; 
-
-      auto proj_it = proj.find(beamIDs().first);
-      auto targ_it = targ.find(beamIDs().second);
-      if (proj_it != proj.end() && targ_it != targ.end()) {
-          int i = proj_it->second + targ_it->second;
-          book(_sig_tot, i, 1, 1);
-      } else {
-          std::cerr << "Error: Invalid beam PID. Did not properly book counter." << std::endl;
-      }
-
+      _proj = {{2212, 0}, {-2212, 3}, {321, 6}, {-321, 9}, {211, 12}, {-211, 14}};
+      _targ = {{2212, 1}, {1000010020, 2}, {2112, 3}}; 
       _plab_edges = {23, 35, 50, 70, 100, 120, 150, 170, 200, 240, 280};
+
+      declare(Beam(), "Beam");
+      
+      auto proj_it = _proj.find(beamIDs().first);
+      auto targ_it = _targ.find(beamIDs().second);
+      if (proj_it != _proj.end() && targ_it != _targ.end()) {
+          int i = proj_it->second + targ_it->second;
+          cout << "Booking d0" << i << "-x01-y01." << std::endl;
+          book(_h_sig_tot, i, 1, 1);
+      } else {
+          std::cerr << "Error: Invalid beam PID. Did not properly book." << std::endl;
+      }
 
     }
 
     void analyze(const Event& event) {
 
-      const ParticlePair& beams = apply<Beam>(event, "Beams").beams();
+      const ParticlePair& beams = apply<Beam>(event, "Beam").beams();
             
       if (isZero(beams.second.momentum().p3().mod())) { // fixed-target mode
-        const double plab = beams.first.momentum().p3().mod() / GeV; 
+        const double plab = beams.first.momentum().p3().mod();
 
         bool found = false;
-        for (size_t i = 0; i < plab_paper.size(); ++i) {
-          if (std::fabs(plab - plab_paper[i]) < tolerance) {
-            _sig_tot[i]->fill(sqrtS()/GeV);  
+        for (size_t i = 0; i < _plab_edges.size(); ++i) {
+          if (std::fabs(plab - _plab_edges[i]) < tolerance) {
+            cout << "_h_sig_tot->fill(" << _plab_edges[i] << ");" << std::endl;
+            _h_sig_tot->fill(_plab_edges[i]);  
             found = true;
             break;
           }
@@ -76,20 +66,20 @@ namespace Rivet {
 
     void finalize() {
 
-      _plab_edges = {23, 35, 50, 70, 100, 120, 150, 170, 200, 240, 280};
-      for (size_t i = 0; i < _plab_edges.size(); ++i) {
-        scale(_sig_tot[i], crossSection()/millibarn/sumW()); 
-      }
-    }
+      scale(_h_sig_tot, crossSection()/millibarn/sumOfWeights());
+    
+    }   
 
     /// @}
 
 
     /// @name Histograms
     /// @{
-    BinnedHistoPtr<Counter> _sig_tot[11];
+    std::map<int, int> _proj; 
+    std::map<int, int> _targ;
+    BinnedHistoPtr<int> _h_sig_tot;
     std::vector<double> _plab_edges;
-    static const double tolerance = 0.5;
+    double tolerance = 0.5;
     /// @}
 
 
