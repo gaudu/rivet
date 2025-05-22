@@ -4,23 +4,24 @@ Summary: Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$​ 
 Experiment: FNAL-E-0104
 Collider: Fermilab
 InspireID: 98502
-Status: UNVALIDATED NOHEPDATA SINGLEWEIGHT UNPHYSICAL
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
 Reentrant: false
 Authors:
  - Chloé Gaudu <gaudu@uni-wuppertal.de>
 References:
  - Phys.Lett.B 61 (1976) 303-308
  - DOI:10.1016/0370-2693(76)90155-6
-#RunInfo: Fixed-target events with $p$, $\overline{p}$​, $K^{+}$, $K^{-}$, $\pi^{+}$ and $\pi^{-}$
+RunInfo: Total cross-section for fixed-target events for a range of projectiles (proton, antiproton, charged kaons, charged pions), and targets (proton, deuteron, neutron), for discrete lab momenta ranging from 23 to 280 GeV/c.
 #Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [K+, p+], [K+, d+], [K+, n+], [K-, p+], [K-, d+], [K-, n+], [pi+, p+], [pi+, d+], [pi+, n+], [pi-, p+], [pi-, d+], [pi-, n+]
-#Energies: [[23.0,0.0], [35.0,0.0], [50.0,0.0], [70.0,0.0], [100.0,0.0], [120.0,0.0], [150.0,0.0], [170.0,0.0], [200.0,0.0], [240.0,0.0], [280.0,0.0]]
+#Energies: [[23.,0.], [35.,0.], [50.,0.], [70.,0.], [100.,0.], [120.,0.], [150.,0.], [170.,0.], [200.,0.], [240.,0.], [280.,0.]]
+NeedCrossSection: True
 Description:
-  'Total cross-sections of projectiles $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$​, with momenta between 23 GeV/c and 280 GeV/c, on fixed-targets protons and deuterons'
+  'Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ projectiles​, with momenta between 23 GeV/c and 280 GeV/c, on protons, deuterons and neutrons fixed targets.'
 ValidationInfo:
-  'Projectile lab energy: [23:280] GeV/c'
+  'Projectile lab momentum: [23:280] GeV/c'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
-Keywords: [cross-section, proton, deuteron, fixed-target]
+Keywords: [total cross-section, proton, deuteron, neutron, fixed-target]
 BibKey: Carroll:1975xf
 BibTeX: '@article{Carroll:1975xf,
     author = "Carroll, A. S. and others",
@@ -33,7 +34,7 @@ BibTeX: '@article{Carroll:1975xf,
     year = "1976"
 }'
 ToDo:
- - Handle ratios: reentrant plugin?
  - Handle several projectile momentum input
  - Merge into a single d0i-x01-y01 the several rows (one per projectile plab)
+ - Handle ratios: reentrant plugin?
 
