@@ -12,7 +12,7 @@ References:
  - Phys.Lett.B 61 (1976) 303-308
  - DOI:10.1016/0370-2693(76)90155-6
 RunInfo: Total cross-section for fixed-target events for a range of projectiles (proton, antiproton, charged kaons, charged pions), and targets (proton, deuteron, neutron), for discrete lab momenta ranging from 23 to 280 GeV/c.
-#Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [K+, p+], [K+, d+], [K+, n+], [K-, p+], [K-, d+], [K-, n+], [pi+, p+], [pi+, d+], [pi+, n+], [pi-, p+], [pi-, d+], [pi-, n+]
+#Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [k+, p+], [k+, d+], [k+, n+], [k-, p+], [k-, d+], [k-, n+], [pi+, p+], [pi+, d+], [pi+, n+], [pi-, p+], [pi-, d+], [pi-, n+]
 #Energies: [[23.,0.], [35.,0.], [50.,0.], [70.,0.], [100.,0.], [120.,0.], [150.,0.], [170.,0.], [200.,0.], [240.,0.], [280.,0.]]
 NeedCrossSection: True
 Description:
