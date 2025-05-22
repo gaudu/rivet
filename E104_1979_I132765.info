@@ -1,0 +1,39 @@
+Name: E104_1979_I132765
+Year: 1979
+Summary: Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$​ on protons and deuterons between 200 GeV/c and 370 GeV/c
+Experiment: FNAL-E-0104
+Collider:  Fermilab
+InspireID: 132765
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Phys.Lett.B 80 (1979) 423-427
+ - DOI:10.1016/0370-2693(79)91205-X
+RunInfo: Total cross-section for fixed-target events for a range of projectiles (proton, antiproton, charged kaons, charged pions), and targets (proton, deuteron, neutron), for discrete lab momenta ranging from 200 to 370 GeV/c.   
+Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [k+, p+], [k+, d+], [k+, n+], [k-, p+], [k-, d+], [k-, n+], [pi+, p+], [pi+, d+], [pi-, p+], [pi-, d+]
+Energies: [[200.,0.], [240.,0.], [280.,0.], [310.,0.], [340.,0.], [370.,0.]]
+NeedCrossSection: True
+Description:
+  'Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ projectiles​, with momenta between 200 GeV/c and 370 GeV/c, on protons, deuterons fixed targets. The cross sections for target neutrons have been obtained from those on protons and deuterons using the Glauber-Wilkin procedure.'
+ValidationInfo:
+  'Projectile lab momentum: [200., 240., 280., 310., 340., 370.] GeV/c'
+  'A description of the process used to validate the Rivet code against the original experimental analysis. Cut-flow tables and similar information  are welcome'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [total cross-section, proton, deuteron, neutron, fixed-target]
+BibKey: Carroll:1978vq
+BibTeX: '@article{Carroll:1978vq,
+    author = "Carroll, A. S. and others",
+    title = "{Total Cross-Sections of $\pi^{\pm}$, $K^{\pm}$, p and $\bar{p}$ on Protons and Deuterons Between 200 GeV/c and 370 GeV/c}",
+    reportNumber = "FERMILAB-PUB-78-085-E",
+    doi = "10.1016/0370-2693(79)91205-X",
+    journal = "Phys. Lett. B",
+    volume = "80",
+    pages = "423--427",
+    year = "1979"
+}'
+ToDo:
+ - Implement the analysis, test it, remove this ToDo, and mark as VALIDATED :-)
+
