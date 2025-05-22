@@ -13,12 +13,10 @@ References:
  - DOI:10.1016/0370-2693(76)90155-6
 RunInfo: Total cross-section for fixed-target events for a range of projectiles (proton, antiproton, charged kaons, charged pions), and targets (proton, deuteron, neutron), for discrete lab momenta ranging from 23 to 280 GeV/c. 
 Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [k+, p+], [k+, d+], [k+, n+], [k-, p+], [k-, d+], [k-, n+], [pi+, p+], [pi+, d+], [pi-, p+], [pi-, d+]
-Energies: [[23.,0.], [35.,0.], [50.,0.], [70.,0.], [100.,0.], [120.,0.], [150.,0.], [170.,0.], [200.,0.], [240.,0.], [280.,0.]]
+Energies: [23.,0.], [35.,0.], [50.,0.], [70.,0.], [100.,0.], [120.,0.], [150.,0.], [170.,0.], [200.,0.], [240.,0.], [280.,0.]
 NeedCrossSection: True
 Description:
-  'Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ projectiles​, with momenta between 23 GeV/c and 280 GeV/c, on protons, deuterons fixed targets. The cross sections for target neutrons have been obtained from those on protons and deuterons using the Glauber-Wilkin procedure.'
-ValidationInfo:
-  'Projectile lab momentum: [23., 35., 50., 70., 100., 120., 150., 170., 200., 240., 280.] GeV/c'
+  'Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ projectiles​, with momenta between 23 GeV/c and 280 GeV/c, on protons, deuterons fixed targets. The cross sections for target neutrons have been obtained from those on protons and deuterons using the Glauber-Wilkin procedure. The discrete projectile lab momentum are 23, 35, 50, 70, 100, 120, 150, 170, 200, 240 and 280 GeV/c.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
 Keywords: [total cross-section, proton, deuteron, neutron, fixed-target]

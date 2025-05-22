@@ -13,13 +13,10 @@ References:
  - DOI:10.1016/0370-2693(79)91205-X
 RunInfo: Total cross-section for fixed-target events for a range of projectiles (proton, antiproton, charged kaons, charged pions), and targets (proton, deuteron, neutron), for discrete lab momenta ranging from 200 to 370 GeV/c.   
 Beams: [p+, p+], [p+, d+], [p+, n+], [p-, p+], [p-, d+], [p-, n+], [k+, p+], [k+, d+], [k+, n+], [k-, p+], [k-, d+], [k-, n+], [pi+, p+], [pi+, d+], [pi-, p+], [pi-, d+]
-Energies: [[200.,0.], [240.,0.], [280.,0.], [310.,0.], [340.,0.], [370.,0.]]
+Energies: [200.,0.], [240.,0.], [280.,0.], [310.,0.], [340.,0.], [370.,0.]
 NeedCrossSection: True
 Description:
-  'Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ projectiles​, with momenta between 200 GeV/c and 370 GeV/c, on protons, deuterons fixed targets. The cross sections for target neutrons have been obtained from those on protons and deuterons using the Glauber-Wilkin procedure.'
-ValidationInfo:
-  'Projectile lab momentum: [200., 240., 280., 310., 340., 370.] GeV/c'
-  'A description of the process used to validate the Rivet code against the original experimental analysis. Cut-flow tables and similar information  are welcome'
+  'Total cross-sections of $\pi^\pm$, $K^\pm$, $p$, and $\overline{p}$ projectiles​, with momenta between 200 GeV/c and 370 GeV/c, on protons, deuterons fixed targets. The cross sections for target neutrons have been obtained from those on protons and deuterons using the Glauber-Wilkin procedure. The discrete projectile lab momentum are 200, 240, 280, 310, 340 and 370 GeV/c.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
 Keywords: [total cross-section, proton, deuteron, neutron, fixed-target]
@@ -35,5 +32,4 @@ BibTeX: '@article{Carroll:1978vq,
     year = "1979"
 }'
 ToDo:
- - Implement the analysis, test it, remove this ToDo, and mark as VALIDATED :-)
-
+ - 
