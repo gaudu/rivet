@@ -1,0 +1,39 @@
+Name: NA22_1987_I246909
+Year: 1987
+Summary: Elastic $\pi^+ p$, $K^+ p$ scaterring at $p_{\mathrm{lab}} = 250$ GeV/c
+Experiment: NA22
+Collider: SPS
+InspireID: 246909
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Phys.Lett.B 186 (1987) 223-226
+ - Sov.J.Nucl.Phys. 47 (1988) 462
+ - Yad.Fiz. 47 (1988) 722-726
+ - DOI:10.1016/0370-2693(87)90284-X
+RunInfo: Fixed target events with $\pi^+ p$ and $K^+ p$, selecting elastic events via missing mass squared cut: $-0.15 < MM^2 < 0.15$ GeV$^2$ and laboratory angle $\beta$ cut: $-0.5 < \beta < 0.3$ mrad.
+Beams: [[pi+, p+], [k+, p+]]
+Energies: [[250.,0.], [250.,0.]]
+NeedCrossSection: True
+Description:
+  'Measurement of partial $\mathrm{d}\sigma/\mathrm{d}t$ and elastic cross-section of $\pi^+ p$, $K^+ p$ fixed-target collisions at $p_{\mathrm{lab}} = 250$ GeV/c. The data were taken with a minimum bias interaction trigger. There are two cuts applied: on the missing mass squared $MM^2$ of two-prong final state: $-0.15 < MM^2 < 0.15$ GeV$^2$, and on the laboratory angle $\beta$, which is the angle between measured beam scatter and expected one from recoil proton: $-0.5 < \beta < 0.3$ mrad.'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [elastic, cross-section]
+BibKey: NA22:1987lmr
+BibTeX: '@article{NA22:1987lmr,
+    author = "Adamus, M. and others",
+    collaboration = "NA22",
+    title = "{Study of Elastic $\pi^+ p$, $K^+ p$ and $p p$ Scattering at 250-{GeV}/$c$}",
+    reportNumber = "IFVE-87-29",
+    doi = "10.1016/0370-2693(87)90284-X",
+    journal = "Phys. Lett. B",
+    volume = "186",
+    pages = "223--226",
+    year = "1987"
+}'
+ToDo:
+ - 
+
