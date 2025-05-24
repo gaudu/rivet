@@ -1,6 +1,6 @@
 Name: NA22_1987_I246909
 Year: 1987
-Summary: Elastic $\pi^+ p$, $K^+ p$ scaterring at $p_{\mathrm{lab}} = 250$ GeV/c
+Summary: Elastic $\pi^+ p$ and $K^+ p$ scaterring at $p_{\mathrm{lab}} = 250$ GeV/c
 Experiment: NA22
 Collider: SPS
 InspireID: 246909
@@ -13,7 +13,7 @@ References:
  - Sov.J.Nucl.Phys. 47 (1988) 462
  - Yad.Fiz. 47 (1988) 722-726
  - DOI:10.1016/0370-2693(87)90284-X
-RunInfo: Fixed target events with $\pi^+ p$ and $K^+ p$, selecting elastic events via missing mass squared cut: $-0.15 < MM^2 < 0.15$ GeV$^2$ and laboratory angle $\beta$ cut: $-0.5 < \beta < 0.3$ mrad.
+RunInfo: Fixed-target events with $\pi^+ p$ and $K^+ p$ at $p_{\mathrm{lab}} = 250$ GeV/c, selecting elastic events via missing mass squared cut: $-0.15 < MM^2 < 0.15$ GeV$^2$ and laboratory angle $\beta$ cut: $-0.5 < \beta < 0.3$ mrad.
 Beams: [[pi+, p+], [k+, p+]]
 Energies: [[250.,0.], [250.,0.]]
 NeedCrossSection: True
