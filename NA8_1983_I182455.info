@@ -1,0 +1,35 @@
+Name: NA8_1983_I182455
+Year: 1983
+Summary: Elastic $\pi^- p$ and $pp$ scaterring between 100 GeV/c and 340 GeV/c
+Experiment: NA8
+Collider: SPS
+InspireID: 182455
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Nucl.Phys.B 217 (1983) 285-335
+ - DOI:10.1016/0550-3213(83)90149-9
+RunInfo: Fixed-target events with $\pi^+ p$ and $pp$ for discrete lab momenta ranging from 100 to 345 GeV/c.
+Beams: [pi-, p+], [p+, p+]
+Energies: [100.,0.], [150.,0.], [200.,0.], [250.,0.], [280.,0.], [300.,0.], [325.,0.], [345.,0.]
+NeedCrossSection: True
+Description:
+  'Measurements of differential cross sections for $\pi^- p$ and $pp$ elastic scattering, with $p_{\mathrm{lab}} = [100, 150, 200, 250, 280, 300, 325, 345] GeV/c, in the $t$ range $0.002 \leq |t| \leq 0.04$ (GeV/c)$^2$.'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [elastic, cross-section, fixed-target]
+BibKey: Burq:1982ja
+BibTeX: '@article{Burq:1982ja,
+    author = "Burq, J. P. and others",
+    title = "{Soft $\pi^- p$ and $p p$ Elastic Scattering in the Energy Range 30-{GeV} to 345-{GeV}}",
+    reportNumber = "CERN-EP/82-195",
+    doi = "10.1016/0550-3213(83)90149-9",
+    journal = "Nucl. Phys. B",
+    volume = "217",
+    pages = "285--335",
+    year = "1983"
+}'
+ToDo:
+ - 
