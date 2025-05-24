@@ -1,0 +1,40 @@
+Name: NA61_2017_I1598505
+Year: 2017
+Summary: Rapidity spectra of $\pi^\pm$, $K^\pm$, $p$ and $\overline{p}$ from $pp$ interactions between 20 and 158 GeV/c
+Experiment: NA61
+Collider: SPS
+InspireID: 1598505
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Eur.Phys.J.C 77 (2017) 10, 671
+ - DOI:10.1140/epjc/s10052-017-5260-4
+RunInfo: Fixed-target proton-proton events for discrete lab momenta ranging from 20 to 158 GeV/c.
+Beams: [p+, p+]
+Energies: [[20.,0.], [30.9,0.], [40.,0.], [80.,0.], [158.,0.]]
+NeedCrossSection: True
+Description:
+  'Rapidity spectrum of identified outgoing charged particles ($\pi^+$, $\pi^-$, $K^+$, $K^+$, $p$ and $\overline{p}$) from fixed-target proton-proton interactions with $p_{\mathrm{lab}} = [20, 30.9, 40, 80, 158] GeV/c, depicted in Figure 34. Weak decay particles (feed-down) corrections are accoutned for by the ALICE::PrimaryParticles projection.'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [rapdity, fixed-target]
+BibKey: NA61SHINE:2017fne
+BibTeX: '@article{NA61SHINE:2017fne,
+    author = "Aduszkiewicz, A. and others",
+    collaboration = "NA61/SHINE",
+    title = "{Measurements of $\pi ^\pm $ , K$^\pm $ , p and ${\bar{\text {p}}}$ spectra in proton-proton interactions at 20, 31, 40, 80 and 158  $\text{ GeV}/c$ with the NA61/SHINE spectrometer at the CERN SPS}",
+    eprint = "1705.02467",
+    archivePrefix = "arXiv",
+    primaryClass = "nucl-ex",
+    reportNumber = "CERN-EP-2017-066",
+    doi = "10.1140/epjc/s10052-017-5260-4",
+    journal = "Eur. Phys. J. C",
+    volume = "77",
+    number = "10",
+    pages = "671",
+    year = "2017"
+}'
+ToDo:
+ - 
