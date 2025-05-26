@@ -1,6 +1,6 @@
-Name: NA61SHINE_2022_I2155140
-Year: 2022
-Summary: Measurement of Hadron Production in $\pi^{-}$-C Interactions at 158 and 350 GeV/c with NA61/SHINE at the CERN SPS.
+Name: NA61SHINE_2023_I2155140
+Year: 2023
+Summary: Measurement of hadron production in $\pi^- C$ interactions at $p_{\mathrm{lab}} = 158$ and $350$ GeV/c
 Experiment: NA61/SHINE
 Collider: CERN-SPS
 InspireID: 2155140
@@ -9,15 +9,13 @@ Reentrant: false
 Authors:
  - Chloé Gaudu <gaudu@uni-wuppertal.de>
 References:
- - DOI:10.48550/arXiv.2209.10561
- - https://arxiv.org/abs/2209.10561 [nucl-ex]
-RunInfo: pi-C to pi+X, pi-X, K+X, K-X, p+X, p-X
+ - Phys.Rev.D 107 (2023) 6, 062004
+ - DOI:10.1103/PhysRevD.107.062004 
+RunInfo: Fixed-target events with $\pi^- C$ at $p_{\mathrm{lab}} = 158$ or $350$ GeV/c.
 Beams: [pi-, C] 
 Energies: [[158, 0], [350, 0]]
 Description:
-  '$p_T$-integrated particle production spectra of charged pions, charged kaons and protons/antiprotons at 158 GeV/c and 350 GeV/c.'
-#ValidationInfo:
-#  'A description of the process used to validate the Rivet code against the original experimental analysis. Cut-flow tables and similar information are welcome'
+  '$p_T$-integrated particle production spectra of $\pi^+$, $\pi^-$, $K^+$, $K^-$, $p$ and $\overline{p}$ns at $p_{\mathrm{lab}}$ = 158 and 350 GeV/c. Weak decay particles (feed-down) corrections are accounted for by the ALICE::PrimaryParticles projection.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
 Keywords: [hadron production, fixed-target]
