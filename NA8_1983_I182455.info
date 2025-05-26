@@ -16,7 +16,7 @@ Beams: [pi-, p+], [p+, p+]
 Energies: [100.,0.], [150.,0.], [200.,0.], [250.,0.], [280.,0.], [300.,0.], [325.,0.], [345.,0.]
 NeedCrossSection: True
 Description:
-  'Measurements of differential cross sections for $\pi^- p$ and $pp$ elastic scattering, with $p_{\mathrm{lab}} = [100, 150, 200, 250, 280, 300, 325, 345] GeV/c, in the $t$ range $0.002 \leq |t| \leq 0.04$ (GeV/c)$^2$.'
+  'Measurements of differential cross sections for $\pi^- p$ and $pp$ elastic scattering, with $p_{\mathrm{lab}}$ = [100, 150, 200, 250, 280, 300, 325, 345] GeV/c, in the $t$ range $0.002 \leq |t| \leq 0.04$ (GeV/c)$^2$.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
 Keywords: [elastic, cross-section, fixed-target]
