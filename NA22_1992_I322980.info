@@ -1,0 +1,36 @@
+Name: NA22_1992_I322980
+Year: 1992
+Summary: $\pi^0$ and $\eta$ meson production in $\pi^+ p$ and $K^+ p$ at $p_{\mathrm{lab}} = 250$ GeV/c
+Experiment: NA22
+Collider: SPS
+InspireID: 322980
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Z.Phys.C 54 (1992) 247-254
+ - DOI:10.1007/BF01566653
+RunInfo: Fixed-target events with $\pi^+ p$ and $K^+ p$ at $p_{\mathrm{lab}} = 250$ GeV/c. Accounting for combined acceptance from the gamma-detectors (IGD and FGD) by selecting $\pi^0$ in the region of the Feynman variable $x_F \geq 0.025$ and $\eta$ in $x_F \geq 0.10$.
+Beams: [[pi+, p+], [k+, p+]]
+Energies: [[250.,0.], [250.,0.]]
+NeedCrossSection: True
+Description:
+  'Measurements of inclusive $\pi^0$ cross sections, differential $\mathrm{d}\sigma/\mathrm{d}x_F$, Lorentz-invariant distribution $f(x)$, transverse momentum squared distribution $\mathrm{d}\sigma/\mathrm{d}^2 p_T$ for $\pi^+ p \rightarrow \pi^0 X$ and $K^+p \rightarrow \pi^0 X$ at $p_{\mathrm{lab}} = 250$ GeV/c. Measurements of inclusive $\eta$ cross sections for $\pi^+ p \rightarrow \eta X$ and $K^+p \rightarrow \eta X$ at $p_{\mathrm{lab}} = 250$ GeV/c.'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [cross-section, transverse momentum, feynman-x,  pi0, eta,fixed-target]
+BibKey: EHSNA22:1991dhh
+BibTeX: '@article{EHSNA22:1991dhh,
+    author = "Atayan, M. R. and others",
+    collaboration = "EHS/NA22",
+    title = "{pi0 and eta meson production in pi+ p and K+ p collisions at 250-GeV/c}",
+    reportNumber = "HEN-344-91",
+    doi = "10.1007/BF01566653",
+    journal = "Z. Phys. C",
+    volume = "54",
+    pages = "247--254",
+    year = "1992"
+}'
+ToDo:
+ - 
