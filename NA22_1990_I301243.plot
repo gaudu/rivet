@@ -1,3 +1,8 @@
+BEGIN PLOT /NA22_1990_I301243/*
+RatioPlot=1
+LogY=0
+END PLOT
+
 BEGIN PLOT /NA22_1990_I301243/d01-x01-y01
 Title=$\pi^+ p \rightarrow \rho^0 X$
 XLabel=$p_{lab}$ [GeV/c]
