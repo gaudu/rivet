@@ -1,0 +1,36 @@
+Name: NA22_1990_I301243
+Year: 1990
+Summary: Inclusive production of vector mesons in $\pi^+ p$ interactions at $p_{\mathrm{lab}} = 250$ GeV/c
+Experiment: NA22
+Collider: SPS
+InspireID: 301243
+Status: UNVALIDATED SINGLEWEIGHT UNPHYSICAL
+Reentrant: false
+Authors:
+ - Chloé Gaudu <gaudu@uni-wuppertal.de>
+References:
+ - Z.Phys.C 46 (1990) 387-395
+ - DOI:10.1007/BF01621026
+RunInfo: Fixed-target events with $\pi^+ p$ at $p_{\mathrm{lab}} = 250$ GeV/c.
+Beams: [pi+, p+]
+Energies: [[250.,0.]]
+NeedCrossSection: True
+Description:
+  'Measurements of inclusive cross-sections, average multiplicity per inelastic collision, topological cross-sections, average multiplicities of resonances, differential $\mathrm{d}\sigma/\mathrm{d}x_F$ cross-section, Lorentz-invariant distribution $f(x)$, transverse momentum squared distribution $\mathrm{d}\sigma/\mathrm{d}^2 p_T$ for $\pi^+ p \rightarrow \rho_0 X$. Measurements of differential $\mathrm{d}\sigma/\mathrm{d}x_F$ cross-section, Lorentz-invariant distribution $f(x)$ for $\pi^+ p \rightarrow \omega X$.'
+#ReleaseTests:
+# - $A my-hepmc-prefix :MODE=some_rivet_flag
+Keywords: [cross-section, multiplicity, transverse momentum, feynman-x, rho0, omega, fixed-target]
+BibKey: EHSNA22:1990vem
+BibTeX: '@article{EHSNA22:1990vem,
+    author = "Agababyan, N. M. and others",
+    collaboration = "EHS/NA22",
+    title = "{Inclusive production of vector mesons in pi+ p interactions at 250-GeV/c}",
+    doi = "10.1007/BF01621026",
+    journal = "Z. Phys. C",
+    volume = "46",
+    pages = "387--395",
+    year = "1990"
+}'
+ToDo:
+ -
+
