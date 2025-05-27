@@ -1,6 +1,6 @@
 Name: NA61_2019_I1753094
 Year: 2019
-Summary: Production and inelastic cross-sections for $p C$, $p Be$, $p Al$ at $p_{\mathrm{lab}} = 60$ GeV/c, and $p C$, $p Be$ at $p_{\mathrm{lab}} = 120$ GeV/c
+Summary: Production and inelastic cross-sections for $p C$ at $p_{\mathrm{lab}} = 60$ and $120$ GeV/c
 Experiment: NA61
 Collider: SPS
 InspireID: 1753094
@@ -11,15 +11,15 @@ Authors:
 References:
  - Phys.Rev.D 100 (2019) 11, 112001
  - DOI:10.1103/PhysRevD.100.112001
-RunInfo: Fixed-target events with $p C$, $p Be$ and $p Al$ at $p_{\mathrm{lab}} = 60$ or $120$ GeV/c.
-Beams: [p+, C], [p+, Be], [p+, Al]
-Energies: [[60.,0.], [120.,0.]], [[60.,0.], [120.,0.]], [[60.,0.]] 
+RunInfo: Fixed-target events with $p C$ at $p_{\mathrm{lab}} = 60$ or $120$ GeV/c.
+Beams: [p+, C]
+Energies: [[60.,0.], [120.,0.]]
 NeedCrossSection: True
 Description:
-  'Measurements of production $\sigma_{\mathrm{prod}}$ and inelastic $\sigma_{\mathrm{inel}}$ cross-sections for  60 GeV/c protons with carbon, beryllium, aluminum targets and 120 GeV/c protons with carbon and beryllium. The production process is defined as that in which new hadrons are produced. $\sigma_{\mathrm{inel}} = \sigma_{\mathrm{tot}} - \sigma_{\mathrm{el}}$ and $\sigma_{\mathrm{prod}} = \sigma_{\mathrm{inel}} - \sigma_{\mathrm{qe}}$, with the coherent elastic cross section $\sigma_{\mathrm{el}}$, and the quasielastic cross section $\sigma_{\mathrm{qe}}$.'
+  'Measurements of production $\sigma_{\mathrm{prod}}$ and inelastic $\sigma_{\mathrm{inel}}$ cross-sections for 60 and 120 GeV/c protons with a carbon target. The production process is defined as that in which new hadrons are produced. $\sigma_{\mathrm{inel}} = \sigma_{\mathrm{tot}} - \sigma_{\mathrm{el}}$ and $\sigma_{\mathrm{prod}} = \sigma_{\mathrm{inel}} - \sigma_{\mathrm{qe}}$, with the coherent elastic cross section $\sigma_{\mathrm{el}}$, and the quasielastic cross section $\sigma_{\mathrm{qe}}$.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
-Keywords: [production, inelastic, cross-section, fixed-target]
+Keywords: [production, inelastic, cross-section, fixed-target, carbon]
 BibKey: NA61SHINE:2019aip
 BibTeX: '@article{NA61SHINE:2019aip,
     author = "Aduszkiewicz, A. and others",
