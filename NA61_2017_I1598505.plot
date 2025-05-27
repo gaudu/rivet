@@ -1,3 +1,8 @@
+BEGIN PLOT /NA61_2017_I1598505/*
+RatioPlot=1
+LogY=0
+END PLOT
+
 BEGIN PLOT /NA61_2017_I1598505/d59-x01-y01
 Title=$p p \rightarrow K^- X$ @ $p_{\mathrm{lab}}$ = 250$ GeV/c with statistical uncertainties
 XLabel=$y$ 
