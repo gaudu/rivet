@@ -19,7 +19,7 @@ Description:
   'Measurements of inclusive $\pi^0$ cross sections, differential $\mathrm{d}\sigma/\mathrm{d}x_F$, Lorentz-invariant distribution $f(x)$, transverse momentum squared distribution $\mathrm{d}\sigma/\mathrm{d}^2 p_T$ for $\pi^+ p \rightarrow \pi^0 X$ and $K^+p \rightarrow \pi^0 X$ at $p_{\mathrm{lab}} = 250$ GeV/c. Measurements of inclusive $\eta$ cross sections for $\pi^+ p \rightarrow \eta X$ and $K^+p \rightarrow \eta X$ at $p_{\mathrm{lab}} = 250$ GeV/c.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
-Keywords: [cross-section, transverse momentum, feynman-x,  pi0, eta,fixed-target]
+Keywords: [cross-section, transverse momentum, feynman-x, pi0, eta, fixed-target]
 BibKey: EHSNA22:1991dhh
 BibTeX: '@article{EHSNA22:1991dhh,
     author = "Atayan, M. R. and others",
