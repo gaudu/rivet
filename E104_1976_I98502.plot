@@ -1,5 +1,5 @@
 # BEGIN PLOT /E104_1976_I98502/.*
-XLabel=$P_{lab}$ [GeV/c]
+XLabel=$p_{lab}$ [GeV/c]
 RatioPlot=1
 LogY=0
 # END PLOT
@@ -67,23 +67,23 @@ YLabel=$\sigma_{K^{-}n}$ [mb]
 END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d13-x01-y01
-Title=$\pi^{+}d \rightarrow X$
+Title=$\pi^{+}p \rightarrow X$
 YLabel=$\sigma_{\pi^{+}p}$ [mb]
 END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d14-x01-y01
-Title=$\pi^{+}n \rightarrow X$
-YLabel=$\sigma_{\pi^{+}p}$ [mb]
+Title=$\pi^{+}d \rightarrow X$
+YLabel=$\sigma_{\pi^{+}d}$ [mb]
 END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d15-x01-y01
-Title=$\pi^{-}d \rightarrow X$
+Title=$\pi^{-}p \rightarrow X$
 YLabel=$\sigma_{\pi^{-}p}$ [mb]
 END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d16-x01-y01
-Title=$\pi^{-}n \rightarrow X$
-YLabel=$\sigma_{\pi^{-}p}$ [mb]
+Title=$\pi^{-}d \rightarrow X$
+YLabel=$\sigma_{\pi^{-}d}$ [mb]
 END PLOT
 
 BEGIN PLOT /E104_1976_I98502/d17-x01-y01
