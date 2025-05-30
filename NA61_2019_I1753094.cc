@@ -1,0 +1,173 @@
+// -*- C++ -*-
+#include "Rivet/Analysis.hh"
+#include "Rivet/Projections/Beam.hh"
+#include "Rivet/Event.hh"
+#include "Rivet/Projections/FinalState.hh"
+#include "Rivet/Projections/UnstableParticles.hh"
+
+namespace Rivet {
+
+
+  /// @brief Add a short analysis description here
+  class NA61_2019_I1753094 : public Analysis {
+  public:
+
+    /// Constructor
+    RIVET_DEFAULT_ANALYSIS_CTOR(NA61_2019_I1753094);
+
+
+    /// @name Analysis methods
+    /// @{
+
+    /// Book histograms and initialise projections before the run
+    void init() {
+      
+      declare(FinalState(), "FS");
+      declare(UnstableParticles(), "UFS");
+      declare(Beam(),"Beam");
+      const ParticlePair& beam = beams();
+
+      if (beam.first.pid() == PID::PROTON && beam.second.pid() == 1000060120) {
+        book(_h_sig_prod, 1, 1, 1);
+        book(_h_sig_inel, 2, 1, 1);
+      }           
+
+    }
+
+
+    /// Perform the per-event analysis
+    void analyze(const Event& event) {
+      ++n_event;
+
+      if (_plab_edges.empty()) {
+        _plab_edges = _h_sig_prod->xEdges(); 
+        _plab_edges = _h_sig_inel->xEdges();
+      }
+
+      const ParticlePair& beams = apply<Beam>(event, "Beam").beams();
+      const FinalState& fs = apply<FinalState>(event, "FS");
+      const UnstableParticles& ufs = apply<UnstableParticles>(event, "UFS");
+            
+      if (isZero(beams.second.momentum().p3().mod())) { // fixed-target mode
+        const double plab = beams.first.momentum().p3().mod();
+
+        bool plab_found = false;
+        for (size_t i = 0; i < _plab_edges.size(); ++i) {
+          if (std::fabs(plab - _plab_edges[i]) < tolerance) {
+
+            /*for (const Particle& p : fs.particles(Cuts::abspid == 1000060120)) {
+              //std::cout << "n_event=" << n_event << ", intact C nucleus | veto elastic event" << std::endl;
+              ++n_elastic;
+              vetoEvent; // veto elastic event
+            }*/
+            for (const Particle& p : ufs.particles(Cuts::abspid == 1000060120)) {
+              //std::cout << "n_event=" << n_event << ", intact C nucleus | veto elastic event" << std::endl;
+              ++n_elastic;
+              vetoEvent; // veto elastic event
+            }
+            int n_charged = 0;
+            for (const Particle& p : fs.particles()) {
+                if (p.charge() != 0 && p.pT() > 0.1*GeV) ++n_charged;
+            }
+            if (n_charged < 2) {
+              //std::cout << "n_event=" << n_event << ", n_charged < 2 | veto elastic event" << std::endl;
+              ++n_elastic;
+              vetoEvent; // veto elastic event
+            }
+            _h_sig_inel->fill(_plab_edges[i]); 
+
+
+            /*int n_recoil = 0;
+            double pT_tot = 0.0;
+            for (const Particle& p : fs.particles(Cuts::abspid == 2212 || Cuts::abspid == 2112)) {
+              if (p.pT() < 0.5*GeV && fabs(p.rapidity()) > 2.0) {
+                ++n_recoil;
+                pT_tot += p.pT();
+              }
+            }
+            if (n_recoil <= 1 && pT_tot < 0.2*GeV) {
+              std::cout << "n_event=" << n_event << ", n_recoil | veto qe event" << std::endl;
+              ++n_qe;
+              vetoEvent;  // veto quasi-elastic event
+            }*/
+
+            const std::set<int> frag_targ = {1000050119, 1000060119}; // residual nucleus due to ejected nucleon
+            bool recoil = false;
+            bool fragment = false;
+            for (const Particle& p : fs.particles()) {
+              
+              if (frag_targ.count(p.pid())) {
+                fragment = true;
+              }
+              if (p.pid() == 2212 || p.pid() == 2112) {
+                recoil = true;
+              }
+              if (fragment && recoil) {
+                std::cout << "n_event=" << n_event << ", recoil proton/neutron with fragment target | veto qe event." << std::endl;
+                ++n_qe;
+                vetoEvent; // veto quasi-elastic event
+              }
+            }
+            
+            _h_sig_prod->fill(_plab_edges[i]);
+
+            
+            /*for (const Particle& p : fs.particles(Cuts::abspid > 1000000000)) {
+              //std::cout << "n_event=" << n_event << ", nucleus: p.pid() = " << p.pid() << std::endl;
+              unique_pids.insert(p.pid());
+            }*/
+
+            plab_found = true;
+            break;
+          }
+        }
+
+        if (!plab_found) {
+          MSG_WARNING("Warning: Beam plab = " << plab << " GeV/c does not match any reference plab.");
+        }
+
+      } else {
+        std::cerr << "Error: Not using fixed-target mode." << std::endl;
+        vetoEvent; // reject event
+      }      
+    }
+
+
+    /// Normalise histograms etc., after the run
+    void finalize() {
+
+      scale(_h_sig_prod, crossSection()/millibarn/sumOfWeights());
+      scale(_h_sig_inel, crossSection()/millibarn/sumOfWeights());  
+
+      std::cout << "n_elastic = " << n_elastic << std::endl;
+      std::cout << "n_qe = " << n_qe << std::endl;
+
+      /*for (int pid : unique_pids) {
+        std::cout << pid << " ";
+      }*/
+
+    }
+
+    /// @}
+
+
+    /// @name Histograms
+    /// @{
+    BinnedHistoPtr<int> _h_sig_prod;
+    BinnedHistoPtr<int> _h_sig_inel;
+    vector<int> _plab_edges;
+    double tolerance = 0.5;
+
+    int n_event = 0;
+    int n_elastic = 0.;
+    int n_qe = 0.;
+    //std::set<int> unique_pids;
+    /// @}
+
+
+  };
+
+
+  RIVET_DECLARE_PLUGIN(NA61_2019_I1753094);
+
+}
