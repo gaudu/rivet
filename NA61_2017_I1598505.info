@@ -12,11 +12,11 @@ References:
  - Eur.Phys.J.C 77 (2017) 10, 671
  - DOI:10.1140/epjc/s10052-017-5260-4
 RunInfo: Fixed-target proton-proton events for discrete lab momenta ranging from 20 to 158 GeV/c.
-Beams: [p+, p+]
+Beams: [[p+, p+]]
 Energies: [[20.,0.], [30.9,0.], [40.,0.], [80.,0.], [158.,0.]]
 NeedCrossSection: True
 Description:
-  'Rapidity spectrum of identified outgoing charged particles ($\pi^+$, $\pi^-$, $K^+$, $K^+$, $p$ and $\overline{p}$) from fixed-target proton-proton interactions with $p_{\mathrm{lab}} = [20, 30.9, 40, 80, 158] GeV/c, depicted in Figure 34. Weak decay particles (feed-down) corrections are accounted for by the ALICE::PrimaryParticles projection.'
+  'Rapidity spectrum of identified outgoing charged particles ($\pi^+$, $\pi^-$, $K^+$, $K^+$, $p$ and $\overline{p}$) from fixed-target proton-proton interactions with $p_{\mathrm{lab}}$ = [20, 30.9, 40, 80, 158] GeV/c, depicted in Figure 34. Weak decay particles (feed-down) corrections are accounted for by the ALICE::PrimaryParticles projection.'
 #ReleaseTests:
 # - $A my-hepmc-prefix :MODE=some_rivet_flag
 Keywords: [rapdity, fixed-target]
