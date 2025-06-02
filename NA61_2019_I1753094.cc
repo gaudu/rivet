@@ -3,7 +3,6 @@
 #include "Rivet/Projections/Beam.hh"
 #include "Rivet/Event.hh"
 #include "Rivet/Projections/FinalState.hh"
-#include "Rivet/Projections/UnstableParticles.hh"
 
 namespace Rivet {
 
@@ -23,7 +22,6 @@ namespace Rivet {
     void init() {
       
       declare(FinalState(), "FS");
-      declare(UnstableParticles(), "UFS");
       declare(Beam(),"Beam");
       const ParticlePair& beam = beams();
 
@@ -37,7 +35,6 @@ namespace Rivet {
 
     /// Perform the per-event analysis
     void analyze(const Event& event) {
-      ++n_event;
 
       if (_plab_edges.empty()) {
         _plab_edges = _h_sig_prod->xEdges(); 
@@ -46,76 +43,70 @@ namespace Rivet {
 
       const ParticlePair& beams = apply<Beam>(event, "Beam").beams();
       const FinalState& fs = apply<FinalState>(event, "FS");
-      const UnstableParticles& ufs = apply<UnstableParticles>(event, "UFS");
             
-      if (isZero(beams.second.momentum().p3().mod())) { // fixed-target mode
+      if (isZero(beams.second.momentum().p3().mod())) { 
         const double plab = beams.first.momentum().p3().mod();
 
         bool plab_found = false;
         for (size_t i = 0; i < _plab_edges.size(); ++i) {
           if (std::fabs(plab - _plab_edges[i]) < tolerance) {
+            
+            /* veto elastic events -> inelastic cross-section */
 
-            /*for (const Particle& p : fs.particles(Cuts::abspid == 1000060120)) {
-              //std::cout << "n_event=" << n_event << ", intact C nucleus | veto elastic event" << std::endl;
-              ++n_elastic;
-              vetoEvent; // veto elastic event
-            }*/
-            for (const Particle& p : ufs.particles(Cuts::abspid == 1000060120)) {
-              //std::cout << "n_event=" << n_event << ", intact C nucleus | veto elastic event" << std::endl;
+            for (const Particle& p : fs.particles(Cuts::abspid == 1000060120)) {
               ++n_elastic;
               vetoEvent; // veto elastic event
             }
+            
             int n_charged = 0;
             for (const Particle& p : fs.particles()) {
                 if (p.charge() != 0 && p.pT() > 0.1*GeV) ++n_charged;
             }
             if (n_charged < 2) {
-              //std::cout << "n_event=" << n_event << ", n_charged < 2 | veto elastic event" << std::endl;
               ++n_elastic;
               vetoEvent; // veto elastic event
             }
             _h_sig_inel->fill(_plab_edges[i]); 
 
+            /* tag event producing non-nucleon particles -> production cross-section */
 
-            /*int n_recoil = 0;
-            double pT_tot = 0.0;
-            for (const Particle& p : fs.particles(Cuts::abspid == 2212 || Cuts::abspid == 2112)) {
-              if (p.pT() < 0.5*GeV && fabs(p.rapidity()) > 2.0) {
-                ++n_recoil;
-                pT_tot += p.pT();
+            bool isProduction = false;
+            for (const Particle& p : fs.particles()) {
+              const int pdgid = abs(p.pid());
+              // ignore nucleons (proton, neutron) and leptons (e, mu, nu)
+              if (pdgid == 2212 || pdgid == 2112) continue;
+              if (pdgid == 11 || pdgid == 13 || (pdgid >= 12 && pdgid <= 16)) continue; 
+              if (p.isHadron()) {
+                isProduction = true;
+                break;
               }
             }
-            if (n_recoil <= 1 && pT_tot < 0.2*GeV) {
-              std::cout << "n_event=" << n_event << ", n_recoil | veto qe event" << std::endl;
-              ++n_qe;
-              vetoEvent;  // veto quasi-elastic event
-            }*/
+            if (isProduction) {
+              _h_sig_prod->fill(_plab_edges[i]);
+            }
 
-            const std::set<int> frag_targ = {1000050119, 1000060119}; // residual nucleus due to ejected nucleon
+            /* veto elastic and quasi-elastic event -> production cross-section
+            
             bool recoil = false;
             bool fragment = false;
             for (const Particle& p : fs.particles()) {
-              
-              if (frag_targ.count(p.pid())) {
+              int pid_no_isomer = p.pid() / 10;
+              if (pid_no_isomer == 100005011 || pid_no_isomer == 100006011) {
                 fragment = true;
               }
               if (p.pid() == 2212 || p.pid() == 2112) {
-                recoil = true;
+                if (fabs(p.rapidity()) > 2.0 && p.pT() < 0.5*GeV) recoil = true;
+              }
+              if (p.isMeson() == true){
+                std::cout << "Meson detected! Not quasi-elastic event." << std::endl;
+                break;
               }
               if (fragment && recoil) {
-                std::cout << "n_event=" << n_event << ", recoil proton/neutron with fragment target | veto qe event." << std::endl;
                 ++n_qe;
                 vetoEvent; // veto quasi-elastic event
               }
             }
-            
-            _h_sig_prod->fill(_plab_edges[i]);
-
-            
-            /*for (const Particle& p : fs.particles(Cuts::abspid > 1000000000)) {
-              //std::cout << "n_event=" << n_event << ", nucleus: p.pid() = " << p.pid() << std::endl;
-              unique_pids.insert(p.pid());
-            }*/
+            _h_sig_prod->fill(_plab_edges[i]); */
 
             plab_found = true;
             break;
@@ -128,7 +119,7 @@ namespace Rivet {
 
       } else {
         std::cerr << "Error: Not using fixed-target mode." << std::endl;
-        vetoEvent; // reject event
+        vetoEvent;
       }      
     }
 
@@ -142,10 +133,6 @@ namespace Rivet {
       std::cout << "n_elastic = " << n_elastic << std::endl;
       std::cout << "n_qe = " << n_qe << std::endl;
 
-      /*for (int pid : unique_pids) {
-        std::cout << pid << " ";
-      }*/
-
     }
 
     /// @}
@@ -157,11 +144,8 @@ namespace Rivet {
     BinnedHistoPtr<int> _h_sig_inel;
     vector<int> _plab_edges;
     double tolerance = 0.5;
-
-    int n_event = 0;
     int n_elastic = 0.;
     int n_qe = 0.;
-    //std::set<int> unique_pids;
     /// @}
 
 
