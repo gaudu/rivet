@@ -28,7 +28,11 @@ namespace Rivet {
       if (beam.first.pid() == PID::PROTON && beam.second.pid() == 1000060120) {
         book(_h_sig_prod, 1, 1, 1);
         book(_h_sig_inel, 2, 1, 1);
-      }           
+      }    
+      else {
+        MSG_ERROR("Beam error: Not compatible!");
+        return;
+      }       
 
     }
 
