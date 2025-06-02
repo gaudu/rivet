@@ -28,7 +28,7 @@ namespace Rivet {
       auto targ_it = _targ.find(beamIDs().second);
       if (proj_it != _proj.end() && targ_it != _targ.end()) {
           int i = proj_it->second + targ_it->second;
-          cout << "Booking d0" << i << "-x01-y01." << std::endl;
+          //cout << "Booking d0" << i << "-x01-y01." << std::endl;
           book(_h_sig_tot, i, 1, 1);
       } else {
           std::cerr << "Error: Invalid beam PID. Did not properly book." << std::endl;
@@ -46,7 +46,6 @@ namespace Rivet {
         bool found = false;
         for (size_t i = 0; i < _plab_edges.size(); ++i) {
           if (std::fabs(plab - _plab_edges[i]) < tolerance) {
-            cout << "_h_sig_tot->fill(" << _plab_edges[i] << ");" << std::endl;
             _h_sig_tot->fill(_plab_edges[i]);  
             found = true;
             break;
