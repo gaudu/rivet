@@ -54,7 +54,6 @@ namespace Rivet {
             /* veto elastic events -> inelastic cross-section */
 
             for (const Particle& p : fs.particles(Cuts::abspid == 1000060120)) {
-              ++n_elastic;
               vetoEvent; // veto elastic event
             }
             
@@ -63,7 +62,6 @@ namespace Rivet {
                 if (p.charge() != 0 && p.pT() > 0.1*GeV) ++n_charged;
             }
             if (n_charged < 2) {
-              ++n_elastic;
               vetoEvent; // veto elastic event
             }
             _h_sig_inel->fill(_plab_edges[i]); 
@@ -85,29 +83,6 @@ namespace Rivet {
               _h_sig_prod->fill(_plab_edges[i]);
             }
 
-            /* veto elastic and quasi-elastic event -> production cross-section
-            
-            bool recoil = false;
-            bool fragment = false;
-            for (const Particle& p : fs.particles()) {
-              int pid_no_isomer = p.pid() / 10;
-              if (pid_no_isomer == 100005011 || pid_no_isomer == 100006011) {
-                fragment = true;
-              }
-              if (p.pid() == 2212 || p.pid() == 2112) {
-                if (fabs(p.rapidity()) > 2.0 && p.pT() < 0.5*GeV) recoil = true;
-              }
-              if (p.isMeson() == true){
-                std::cout << "Meson detected! Not quasi-elastic event." << std::endl;
-                break;
-              }
-              if (fragment && recoil) {
-                ++n_qe;
-                vetoEvent; // veto quasi-elastic event
-              }
-            }
-            _h_sig_prod->fill(_plab_edges[i]); */
-
             plab_found = true;
             break;
           }
@@ -128,10 +103,7 @@ namespace Rivet {
     void finalize() {
 
       scale(_h_sig_prod, crossSection()/millibarn/sumOfWeights());
-      scale(_h_sig_inel, crossSection()/millibarn/sumOfWeights());  
-
-      std::cout << "n_elastic = " << n_elastic << std::endl;
-      std::cout << "n_qe = " << n_qe << std::endl;
+      scale(_h_sig_inel, crossSection()/millibarn/sumOfWeights());
 
     }
 
@@ -144,8 +116,6 @@ namespace Rivet {
     BinnedHistoPtr<int> _h_sig_inel;
     vector<int> _plab_edges;
     double tolerance = 0.5;
-    int n_elastic = 0.;
-    int n_qe = 0.;
     /// @}
 
 
